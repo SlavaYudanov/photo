@@ -1,0 +1,109 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.mainpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.maintitle h1 {
+    color: red;
+}
+
+.maintitle h2 {
+    color: gray;
+}
+
+.konvertblock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1150px;
+}
+
+.convert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #656363; /* Серый цвет */
+    color: #fff;
+    width: 100%;
+    max-width: 1150px;
+    padding: 45px 30px 0;
+}
+
+/* Стили для кнопки */
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.file-load {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .file-load:hover {
+        background-color: #2980b9;
+    }
+
+.file-label:hover {
+    background-color: #2980b9;
+}
+
+/* Скрытие стандартного input[type="file"] */
+.file-input {
+    display: none;
+}
+
+/* Стили для отображения имени файла */
+#fileName {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+.col-sm {
+    padding: 45px 30px 0;
+}

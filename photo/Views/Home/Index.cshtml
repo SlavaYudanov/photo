@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<body>
+    <div class="mainpage">
+        <div class="maintitle">
+            <h1>Мой Конвертер Файлов</h1>
+            <h2>Преобразуйте ваши файлы в любой формат!</h2>
+        </div>
+        <div class="konvertblock">
+            <div class="kolvo">
+            </div>
+            <form asp-action="Upload" asp-controller="Home" method="post" enctype="multipart/form-data">
+                <div class="convert">
+                    <label for="uploadedFiles" class="file-label">Выберите файл</label>
+                    <input type="file" id="uploadedFiles" name="uploadedFiles" class="file-input" onchange="displayFileName()" required multiple>
+                    <span id="fileName"></span>
+
+                    <input type="submit" class="file-load" value="Загрузить" id="uploadButton" style="display: none;">
+                    <p>Перетащите файлы сюда. 100 MB максимальный размер файла или Регистрация</p>
+                </div>
+            </form>
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="logo-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+                            <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
+                        </svg>
+                    </div>
+                    <h5>Быстро и просто</h5>
+                    <div class="text-block">
+                        <p>Просто перетащите свои файлы на страницу, выберите выходной формат и нажмите кнопку «Конвертировать». Подождите немного для завершения процесса. Мы стараемся выполнять все наши преобразования не дольше 1-2 минут.</p>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="logo-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-browser-chrome" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M16 8a8 8 0 0 1-7.022 7.94l1.902-7.098a3 3 0 0 0 .05-1.492A3 3 0 0 0 10.237 6h5.511A8 8 0 0 1 16 8M0 8a8 8 0 0 0 7.927 8l1.426-5.321a3 3 0 0 1-.723.255 3 3 0 0 1-1.743-.147 3 3 0 0 1-1.043-.7L.633 4.876A8 8 0 0 0 0 8m5.004-.167L1.108 3.936A8.003 8.003 0 0 1 15.418 5H8.066a3 3 0 0 0-1.252.243 2.99 2.99 0 0 0-1.81 2.59M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                        </svg>
+                    </div>
+                    <h5>Поддерживаются все устройства</h5>
+                    <div class="text-block">
+                        <p>Convertor++ работает в браузере и на всех платформах. Нет необходимости загружать и устанавливать любое программное обеспечение.</p>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="logo-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-heart" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                            <path d="M8 3.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                        </svg>
+                    </div>
+                    <h5>Пользовательские настройки</h5>
+                    <div class="text-block">
+                        <p>Большинство типов конвертаций поддерживают расширенные настройки. Например, в видео конвертере вы можете выбрать качество, соотношение сторон, кодек и другие параметры, повернуть и отразить видео.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
