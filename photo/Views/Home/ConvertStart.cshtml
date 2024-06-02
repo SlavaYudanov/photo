@@ -1,0 +1,13 @@
+﻿@model List<string>;
+@{
+    foreach (var file in Model)
+    {
+        <div class="buttons_text">
+            <a class="buttons_download" href="@Url.Action("GetFile", "Home", new { fileName = file })" download>
+                Скачать
+            </a>
+            @System.IO.Path.GetFileName(file)
+        </div>
+    }
+}
+

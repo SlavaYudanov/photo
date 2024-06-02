@@ -31,23 +31,45 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="bg-body-tertiary text-center">
-        <div class="container p-4"></div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2020 Copyright:
-            <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <footer class="bg-dark text-white text-center text-lg-start">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Про нас</h5>
+                    <p>
+                        Convertator++ — это идеальное решение для быстрого и эффективного преобразования файлов.
+                        Следите за обновлениями и функциями.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Подписывайтесь на нас</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="https://vk.com/galliardd" class="text-white">VK</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Наши контакты</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="#" class="text-white">slava.yudanov@mail.ru</a></li>
+                        <li><a href="tel:+123456789" class="text-white">+8(950)607 23 89</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3 bg-secondary">
+            © 2024 Convertator++ - Все права защищины.
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-

@@ -4,17 +4,20 @@
 // Write your JavaScript code.
 function displayFileName() {
     const fileInput = document.getElementById('uploadedFiles');
+
     const fileNameSpan = document.getElementById('fileName');
+
     const uploadButton = document.getElementById('uploadButton');
+
     const fileCount = fileInput.files.length;
+
     let arr = [];
     
     // Создаем новую строку для каждого файла
-
     if (fileInput.files.length > 0) {
         for (var i = 0; i < fileInput.files.length; i++) {
             var fileSize = fileInput.files[i].size; // Размер файла в байтах
-            if (fileSize > 70000) {
+            if (fileSize > 70000000) {
                 arr.push(fileInput.files[i].name);
                 /* var indexToRemove = fileInput.files.indexOf(fileInput.files[i].name); // Находим индекс элемента
                  if (indexToRemove != -1) { // Проверяем, что элемент найден

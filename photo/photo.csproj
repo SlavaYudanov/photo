@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\photoLibrary\photoLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="uploads\" />
   </ItemGroup>
 

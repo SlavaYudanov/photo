@@ -83,9 +83,9 @@ body {
     transition: background-color 0.3s ease;
 }
 
-    .file-load:hover {
-        background-color: #2980b9;
-    }
+.file-load:hover {
+    background-color: #2980b9;
+}
 
 .file-label:hover {
     background-color: #2980b9;
@@ -107,3 +107,41 @@ body {
 .col-sm {
     padding: 45px 30px 0;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+.buttons_text{
+    margin: 10px;
+}
+
+.buttons_download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.buttons_download:hover {
+    background-color: #2980b9;
+}
+

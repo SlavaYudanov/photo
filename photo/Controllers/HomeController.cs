@@ -19,6 +19,7 @@ namespace photo.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            var a = logger. GetHashCode();
         }
         public IActionResult Index()
         {
@@ -32,9 +33,17 @@ namespace photo.Controllers
         }
         public IActionResult ConvertStart(ConvertViewModel convert)
         {
+            var guid = GetGuid().ToString();
             var client = new ApiClient();
-            var response = client.ConvertFiles(convert.FileNames.ToArray());
-            return View();
+            var response = client.ConvertFiles(guid, convert.FileNames.ToArray(), convert.FileTypes.ToArray());
+            return View(response);
+        }
+
+        [HttpGet]
+        public IActionResult GetFile(string fileName)
+        {
+            var fileBytes = System.IO.File.ReadAllBytes(fileName);
+            return File(fileBytes, "application/octet-stream", fileName);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -42,14 +51,39 @@ namespace photo.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         [HttpPost]
         public async Task<IActionResult> Upload(IFormFileCollection uploadedFiles)
         {
+            var guid = GetGuid();
 
+            if (uploadedFiles != null)
+            {
+
+                var uploadPath = $"C:/uploads/{guid}";
+                // создаем папку для хранения файлов
+                Directory.CreateDirectory(uploadPath);
+
+                foreach (var file in uploadedFiles)
+                {
+                    // путь к папке uploads
+                    var fullPath = $"{uploadPath}/{file.FileName}";
+
+                    // сохраняем файл в папку uploads
+                    using var fileStream = new FileStream(fullPath, FileMode.Create);
+                    await file.CopyToAsync(fileStream);
+                }
+                TempData["files"] = uploadedFiles.Select(x => x.FileName).ToList();
+                return RedirectToAction("Convert");
+            }
+            return RedirectToAction("Index");
+        }
+
+        private Guid GetGuid()
+        {
             var guid = Guid.NewGuid();
             //добавить создание гуида для авторизованных по их id 
 
-            //это работает неправильно :(  есть варик сделать userName + куки
             if (User.Identity != null && User.Identity.IsAuthenticated)
             {
                 var userId = User.Identity.GetUserId();
@@ -61,35 +95,14 @@ namespace photo.Controllers
             else if (Request.Cookies.ContainsKey("uid"))
             {
                 guid = new Guid(Request.Cookies["uid"]!);
-
             }
             else
             {
                 Response.Cookies.Append("uid", guid.ToString());
             }
 
-            if (uploadedFiles != null)
-            {
-
-                var uploadPath = $"{Directory.GetCurrentDirectory()}/uploads/{guid}";
-                // создаем папку для хранения файлов
-                Directory.CreateDirectory(uploadPath);
-
-                foreach (var file in uploadedFiles)
-                {
-                    // путь к папке uploads
-                    string fullPath = $"{uploadPath}/{file.FileName}";
-
-                    // сохраняем файл в папку uploads
-                    using var fileStream = new FileStream(fullPath, FileMode.Create);
-                    await file.CopyToAsync(fileStream);
-                }
-                TempData["files"] = uploadedFiles.Select(x => x.FileName ).ToList();
-                return RedirectToAction("Convert") ;
-            }
-            return RedirectToAction("Index");
+            return guid;
         }
 
-        
     }
 }
